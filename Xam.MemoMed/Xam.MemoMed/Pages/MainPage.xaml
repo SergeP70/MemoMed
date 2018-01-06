@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Xam.MemoMed"
+            xmlns:pages="clr-namespace:Xam.MemoMed.Pages;assembly=Xam.MemoMed" 
+            x:Class="Xam.MemoMed.Pages.MainPage">
+    <TabbedPage.Children>
+        <pages:PillboxPage Title="Box" />
+        <pages:AddMedicinePage Title="+MED"/>
+        <pages:ContactsPage Title="Contact" />
+        <pages:SettingsPage Title="Settings" />
+    </TabbedPage.Children>
+</TabbedPage>

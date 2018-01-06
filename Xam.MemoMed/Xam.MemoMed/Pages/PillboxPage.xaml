@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:Xam.MemoMed.Extensions"
+             x:Class="Xam.MemoMed.Pages.PillboxPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"  />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Horizontal" Padding="10" Spacing="5" HorizontalOptions="CenterAndExpand"
+                     Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <Label Text="Pillendoos van gebruiker: " FontSize="Medium"/>
+            <Label Text="Serge" FontSize="Medium"/>
+        </StackLayout>
+        <BoxView Color="LemonChiffon" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" />
+        <BoxView Color="Moccasin" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" />
+        <BoxView Color="Lavender" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" />
+        <BoxView Color="LightSteelBlue" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" />
+
+        <StackLayout Grid.Row="1" Grid.Column="0" Padding="20" VerticalOptions="Center">
+            <Image x:Name="imgMorning" Source="{extensions:ImageResource Xam.MemoMed.Images.morning.png}" />
+        </StackLayout>
+        <ScrollView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+            <StackLayout Padding="20,10,5,10">
+                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
+                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
+                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
+                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
+                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
+                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Grid.Row="2" Grid.Column="0" Padding="20" VerticalOptions="Center">
+            <Image x:Name="imgNoon" Source="{extensions:ImageResource Xam.MemoMed.Images.noon.png}" />
+        </StackLayout>
+        <ScrollView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+            <StackLayout Padding="20,10,5,10">
+                <Label Text="Dafalgan 1 tablet" FontSize="Medium"/>
+                <Label Text="Ferricure 15 druppels" FontSize="Medium"/>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Grid.Row="3" Grid.Column="0" Padding="20" VerticalOptions="Center">
+            <Image x:Name="imgEvening" Source="{extensions:ImageResource Xam.MemoMed.Images.evening.png}" />
+        </StackLayout>
+        <ScrollView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+            <StackLayout Padding="20,10,5,10">
+                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Grid.Row="4" Grid.Column="0" Padding="20" VerticalOptions="Center">
+            <Image x:Name="imgNight" Source="{extensions:ImageResource Xam.MemoMed.Images.night.png}" />
+        </StackLayout>
+        <ScrollView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center" >
+            <StackLayout Padding="20,10,5,10">
+                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
+                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

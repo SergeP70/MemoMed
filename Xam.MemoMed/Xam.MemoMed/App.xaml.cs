@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Xam.MemoMed.Pages;
 using Xamarin.Forms;
 
 namespace Xam.MemoMed
@@ -12,8 +12,7 @@ namespace Xam.MemoMed
         public App()
         {
             InitializeComponent();
-
-            MainPage = new Xam.MemoMed.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

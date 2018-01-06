@@ -2,9 +2,41 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xam.MemoMed.App">
-	<Application.Resources>
+    <Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <OnPlatform x:Key="PlatformContentPagePadding" x:TypeArguments="Thickness">
+                <On Platform="iOS">0, 20, 0, 5</On>
+                <On Platform="Android">0, 10, 0, 0</On>
+                <On Platform="Windows">0, 10, 0, 0</On>
+            </OnPlatform>
 
-	</Application.Resources>
+            <!-- Common Colors 
+            Timeslot Colors:
+            LemonChiffon #FFFACD	rgb(255,250,205)
+            Moccasin #FFE4B5	rgb(255,228,181)
+            Lavender #E6E6FA	rgb(230,230,250)
+            LightSteelBlue #B0C4DE	rgb(176,196,222)
+            DarkGoldenrod  #B8860B rgb(184,134,11) logo
+            MidnightBlue  #191970 rgb(25, 25, 112) logo -->
+
+            <Color x:Key="TsMorningColor">#FFFACD</Color>
+            <Color x:Key="TsNoonColor">#FFE4B5</Color>
+            <Color x:Key="TsEveningColor">#E6E6FA</Color>
+            <Color x:Key="TsNightColor">#B0C4DE</Color>
+
+            <!-- Images Timeslot Views, voorlopig niet gebruikt-->
+            <Style x:Key="imageTsStyle" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+
+
+
+        </ResourceDictionary>
+
+
+    </Application.Resources>
 </Application>
