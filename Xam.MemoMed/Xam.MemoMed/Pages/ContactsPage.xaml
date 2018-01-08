@@ -2,11 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xam.MemoMed.Pages.ContactsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Contacts Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="10">
+            <Label Text="Contactpersonen" FontSize="Medium" HorizontalOptions="Center"/>
+            <BoxView HeightRequest="2" Color="Black" />
+            <StackLayout Orientation="Horizontal" Spacing="10" >
+                <Switch x:Name="swInformContact" Toggled="OnSwInformContactToggled"></Switch>
+                <Label Text="Verwittig iemand bij niet inname" VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout x:Name="slInformer" Padding="10,0,10,0" IsEnabled="False">
+                <Entry Placeholder="Naam" Keyboard="Text" IsEnabled="True" FontSize="Small"/>
+                <Entry Placeholder="Email" Keyboard="Email" IsEnabled="False" FontSize="Small"/>
+                <Entry Placeholder="GSM" Keyboard="Telephone" IsEnabled="False" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Huisarts" FontSize="Medium" />
+                <StackLayout Padding="10,0,10,0">
+                    <Entry Placeholder="Naam" Keyboard="Text" FontSize="Small" />
+                    <Entry Placeholder="Email" Keyboard="Email" FontSize="Small"/>
+                    <Entry Placeholder="GSM" Keyboard="Telephone" FontSize="Small"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Apotheek" FontSize="Medium" />
+                <StackLayout Padding="10,0,10,0">
+                    <Entry Placeholder="Naam" Keyboard="Text" FontSize="Small" />
+                    <Entry Placeholder="Email" Keyboard="Email" FontSize="Small"/>
+                    <Entry Placeholder="Tel" Keyboard="Telephone" FontSize="Small"/>
+                    <StackLayout Orientation="Horizontal" Spacing="5" Padding="0,10">
+                        <Switch x:Name="swMailOrder"></Switch>
+                        <Label Text="Mail bestelling door" VerticalOptions="Center" FontSize="Small"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

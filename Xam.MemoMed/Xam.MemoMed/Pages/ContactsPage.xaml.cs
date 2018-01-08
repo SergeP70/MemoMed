@@ -16,5 +16,10 @@ namespace Xam.MemoMed.Pages
         {
             InitializeComponent();
         }
+
+        private void OnSwInformContactToggled(object sender, ToggledEventArgs e)
+        {
+            slInformer.IsEnabled = true;
+        }
     }
 }
