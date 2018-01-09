@@ -99,6 +99,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="PageModels\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
