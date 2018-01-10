@@ -64,6 +64,12 @@ namespace Xam.MemoMed.Domain.Services
             return medicines.FirstOrDefault(m => m.Id == id);
         }
 
+        public async Task<IEnumerable<Medicine>> GetAll()
+        {
+            await Task.Delay(Constants.Mocking.FakeDelay);
+            return medicines;
+        }
+
         public async Task SaveMedicin(Medicine medicine)
         {
             var oldMedicine = await GetMedicinById(medicine.Id);

@@ -51,14 +51,15 @@
     <Compile Include="Domain\Services\TimeslotInMemoryService.cs" />
     <Compile Include="Domain\Services\UsersInMemoryService.cs" />
     <Compile Include="Extensions\ImageResourceExtension.cs" />
+    <Compile Include="PageModels\AddMedicinePageModel.cs" />
+    <Compile Include="PageModels\ContactsPageModel.cs" />
+    <Compile Include="PageModels\PillboxPageModel.cs" />
+    <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="Pages\AddMedicinePage.xaml.cs">
       <DependentUpon>AddMedicinePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PillboxPage.xaml.cs">
       <DependentUpon>PillboxPage.xaml</DependentUpon>
@@ -69,10 +70,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -98,10 +95,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PageModels\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Pages\AddMedicinePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

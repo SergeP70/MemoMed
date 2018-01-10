@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Xam.MemoMed.Pages;
 using Xamarin.Forms;
+using FreshMvvm;
+using Xam.MemoMed.PageModels;
 
 namespace Xam.MemoMed
 {
@@ -12,8 +14,14 @@ namespace Xam.MemoMed
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            var mainPage = new FreshTabbedNavigationContainer();
+            mainPage.AddTab<PillboxPageModel>("BOX", null);
+            mainPage.AddTab<AddMedicinePageModel>("+MED", null);
+            mainPage.AddTab<ContactsPageModel>("Contacts", null);
+            mainPage.AddTab<SettingsPageModel>("Settings", null);
+            MainPage = mainPage;
         }
+
 
         protected override void OnStart()
         {
