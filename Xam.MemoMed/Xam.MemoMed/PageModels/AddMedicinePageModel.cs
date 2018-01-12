@@ -1,4 +1,5 @@
 ﻿using FreshMvvm;
+using Xamarin.Forms;
 
 namespace Xam.MemoMed.PageModels
 {
@@ -8,6 +9,18 @@ namespace Xam.MemoMed.PageModels
         {
             get { return "Hello by FreshMvvm"; }
         }
+
+        public Command ShowBarcodePageCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    CoreMethods.PushPageModel<BarcodePageModel>(null,true);
+                });
+            }
+        }
+
 
     }
 }

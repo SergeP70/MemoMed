@@ -33,12 +33,19 @@
         </StackLayout>
         <ScrollView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
             <StackLayout Padding="20,10,5,10">
-                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
-                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
-                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
-                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
-                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
-                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
+                <ListView ItemsSource="{Binding MedicinesInMorning}" SeparatorVisibility="None" RowHeight="30">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Medication.NickName}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Quantity}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Medication.Unit}" FontSize="Medium" VerticalOptions="Center"/>
+                                </StackLayout> 
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
 
@@ -47,8 +54,19 @@
         </StackLayout>
         <ScrollView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
             <StackLayout Padding="20,10,5,10">
-                <Label Text="Dafalgan 1 tablet" FontSize="Medium"/>
-                <Label Text="Ferricure 15 druppels" FontSize="Medium"/>
+                <ListView ItemsSource="{Binding MedicinesInNoon}" SeparatorVisibility="None" RowHeight="30">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Medication.NickName}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Quantity}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Medication.Unit}" FontSize="Medium" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
 
@@ -57,7 +75,19 @@
         </StackLayout>
         <ScrollView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center">
             <StackLayout Padding="20,10,5,10">
-                <Label Text="Ventolin 2 puffs" FontSize="Medium" />
+                <ListView ItemsSource="{Binding MedicinesInEvening}" SeparatorVisibility="None" RowHeight="30">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Medication.NickName}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Quantity}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Medication.Unit}" FontSize="Medium" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
 
@@ -66,8 +96,19 @@
         </StackLayout>
         <ScrollView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Center" >
             <StackLayout Padding="20,10,5,10">
-                <Label Text="Seretide 2 puffs" FontSize="Medium"/>
-                <Label Text="Xyzall 2,5 ml" FontSize="Medium"/>
+                <ListView ItemsSource="{Binding MedicinesInNight}" SeparatorVisibility="None" RowHeight="30">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Medication.NickName}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Quantity}" FontSize="Medium" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Medication.Unit}" FontSize="Medium" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </Grid>

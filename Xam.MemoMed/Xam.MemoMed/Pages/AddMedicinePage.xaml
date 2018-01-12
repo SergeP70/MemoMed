@@ -5,7 +5,7 @@
              NavigationPage.HasNavigationBar="False">
     <StackLayout Padding="10" Spacing="20">
         <Label Text="Toevoegen Medicijn" FontSize="Medium" HorizontalOptions="Center"/>
-        <Button Text="Zoek via Barcode" FontSize="Large" />
+        <Button x:Name="btnBarcode" Text="Zoek via Barcode" FontSize="Large" Command="{Binding ShowBarcodePageCommand}" />
         <StackLayout>
             <Entry Placeholder="Of type naam van medicijn" Keyboard="Text" FontSize="Medium" />
             <Entry Placeholder="Soort" Keyboard="Text" FontSize="Medium" IsEnabled="False"/>

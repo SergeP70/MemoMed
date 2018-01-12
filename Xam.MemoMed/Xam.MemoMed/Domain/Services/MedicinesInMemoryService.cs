@@ -14,6 +14,7 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Dafalgan bruistabletten 40x 500mg",
+                NickName="Dafalgan",
                 MppCv = "3391505",
                 ContentQuantity = 40,
                 Ingredient="Paracetamol",
@@ -23,6 +24,7 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Seretide 25/50 dosisaerosol susp. 120dos.",
+                NickName="Seretide",
                 MppCv = "1593094",
                 ContentQuantity = 1,
                 Ingredient="Salmeterol fluticason",
@@ -32,6 +34,7 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Xyzall siroop oploss. 200ml 2,5mg/5ml",
+                NickName="Xyzall",
                 MppCv = "2402915",
                 ContentQuantity = 1,
                 Ingredient="Levocetirizine",
@@ -41,6 +44,7 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Ferricure 100mg/5ml oploss. 60ml 225mg/5ml",
+                NickName="Ferricure",
                 MppCv = "1000280",
                 ContentQuantity = 1,
                 Ingredient="Ijzer",
@@ -50,6 +54,7 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Ventolin dosisaerosol susp. 200dos. 100Âµg/1dos.",
+                NickName="Ventolin",
                 MppCv = "135913",
                 ContentQuantity = 1,
                 Ingredient="Salbutamol",
@@ -60,13 +65,13 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task<Medicine> GetMedicinById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return medicines.FirstOrDefault(m => m.Id == id);
         }
 
         public async Task<IEnumerable<Medicine>> GetAll()
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return medicines;
         }
 

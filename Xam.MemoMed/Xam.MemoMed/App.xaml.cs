@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xam.MemoMed.Pages;
-using Xamarin.Forms;
-using FreshMvvm;
+﻿using FreshMvvm;
 using Xam.MemoMed.PageModels;
+using Xamarin.Forms;
 
 namespace Xam.MemoMed
 {

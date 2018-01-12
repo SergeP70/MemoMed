@@ -52,11 +52,15 @@
     <Compile Include="Domain\Services\UsersInMemoryService.cs" />
     <Compile Include="Extensions\ImageResourceExtension.cs" />
     <Compile Include="PageModels\AddMedicinePageModel.cs" />
+    <Compile Include="PageModels\BarcodePageModel.cs" />
     <Compile Include="PageModels\ContactsPageModel.cs" />
     <Compile Include="PageModels\PillboxPageModel.cs" />
     <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="Pages\AddMedicinePage.xaml.cs">
       <DependentUpon>AddMedicinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BarcodePage.xaml.cs">
+      <DependentUpon>BarcodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
@@ -95,7 +99,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Pages\AddMedicinePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -127,6 +130,12 @@
     <EmbeddedResource Include="Images\evening.png" />
     <EmbeddedResource Include="Images\morning.png" />
     <EmbeddedResource Include="Images\night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\BarcodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

@@ -15,25 +15,25 @@ namespace Xam.MemoMed.Domain.Services
         {
             new Timeslot
             {
-                Name="Ochtend",
+                Name="Morning",
                 TimeslotStart=new TimeSpan(7,0,0),
                 TimeslotEnd=new TimeSpan(9,0,0),
             },
             new Timeslot
             {
-                Name="Middag",
+                Name="Noon",
                 TimeslotStart=new TimeSpan(12,0,0),
                 TimeslotEnd=new TimeSpan(14,0,0),
             },
             new Timeslot
             {
-                Name="Avond",
+                Name="Evening",
                 TimeslotStart=new TimeSpan(18,0,0),
                 TimeslotEnd=new TimeSpan(20,0,0),
             },
             new Timeslot
             {
-                Name="Nacht",
+                Name="Night",
                 TimeslotStart=new TimeSpan(22,0,0),
                 TimeslotEnd=new TimeSpan(24,0,0),
             },
@@ -83,8 +83,10 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Dafalgan bruistabletten 40x 500mg",
+                NickName="Dafalgan",
                 MppCv = "3391505",
                 ContentQuantity = 40,
+                Unit="tablet(s)",
                 Ingredient="Paracetamol",
                 IngredientQuantity=500,
                 Price=7.57
@@ -92,8 +94,10 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Seretide 25/50 dosisaerosol susp. 120dos.",
+                NickName="Seretide",
                 MppCv = "1593094",
                 ContentQuantity = 1,
+                Unit="puff(s)",
                 Ingredient="Salmeterol fluticason",
                 IngredientQuantity=120,
                 Price=25.48
@@ -101,8 +105,10 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Xyzall siroop oploss. 200ml 2,5mg/5ml",
+                NickName="Xyzall",
                 MppCv = "2402915",
                 ContentQuantity = 1,
+                Unit="ml.",
                 Ingredient="Levocetirizine",
                 IngredientQuantity=200,
                 Price=11.90
@@ -110,8 +116,10 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Ferricure 100mg/5ml oploss. 60ml 225mg/5ml",
+                NickName="Ferricure",
                 MppCv = "1000280",
                 ContentQuantity = 1,
+                Unit="drups",
                 Ingredient="Ijzer",
                 IngredientQuantity=60,
                 Price=9.11
@@ -119,8 +127,10 @@ namespace Xam.MemoMed.Domain.Services
             new Medicine
             {
                 Name = "Ventolin dosisaerosol susp. 200dos. 100Âµg/1dos.",
+                NickName="Ventolin",
                 MppCv = "135913",
                 ContentQuantity = 1,
+                Unit="puff(s)",
                 Ingredient="Salbutamol",
                 IngredientQuantity=200,
                 Price=6.54
@@ -129,7 +139,7 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task<Medicine> GetMedicinById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return medicines.FirstOrDefault(m => m.Id == id);
         }
 
@@ -145,27 +155,32 @@ namespace Xam.MemoMed.Domain.Services
             new Compartment
             {
                 Date= new DateTime(2018,01,01),
-                Timeslot= timeslots.Where(t => t.Name == "Ochtend").FirstOrDefault(),
+                Timeslot= timeslots.Where(t => t.Name == "Morning").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
                 Status = false,
                 Details = new List<CompartmentDetail>
                 {
                     new CompartmentDetail
                     {
-                        Medication = medicines.Where(m => m.MppCv == "2402915").FirstOrDefault(),
+                        Medication = medicines.Where(m => m.MppCv == "135913").FirstOrDefault(),
                         Quantity = 2
                     },
                     new CompartmentDetail
                     {
                         Medication = medicines.Where(m => m.MppCv == "1593094").FirstOrDefault(),
                         Quantity = 2
-                    }
+                    },
+                    new CompartmentDetail
+                    {
+                        Medication = medicines.Where(m => m.MppCv == "2402915").FirstOrDefault(),
+                        Quantity = 2
+                    },
                 }
             },
             new Compartment
             {
                 Date= new DateTime(2018,01,01),
-                Timeslot= timeslots.Where(t => t.Name == "Middag").FirstOrDefault(),
+                Timeslot= timeslots.Where(t => t.Name == "Noon").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
                 Status = false,
                 Details = new List<CompartmentDetail>
@@ -180,7 +195,7 @@ namespace Xam.MemoMed.Domain.Services
             new Compartment
             {
                 Date= new DateTime(2018,01,01),
-                Timeslot= timeslots.Where(t => t.Name == "Avond").FirstOrDefault(),
+                Timeslot= timeslots.Where(t => t.Name == "Evening").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
                 Status = false,
                 Details = new List<CompartmentDetail>
@@ -195,13 +210,12 @@ namespace Xam.MemoMed.Domain.Services
                         Medication = medicines.Where(m => m.MppCv == "2402915").FirstOrDefault(),
                         Quantity = 15
                     }
-
                 }
             },
             new Compartment
             {
                 Date= new DateTime(2018,01,01),
-                Timeslot= timeslots.Where(t => t.Name == "Nacht").FirstOrDefault(),
+                Timeslot= timeslots.Where(t => t.Name == "Night").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
                 Status = false,
                 Details = new List<CompartmentDetail>
@@ -221,10 +235,11 @@ namespace Xam.MemoMed.Domain.Services
             return compartments.Where(c => c.Consumer.Id == userid);
         }
 
-        public async Task<Compartment> GetCompartment(int compartmentId)
+        public async Task<Compartment> GetCompartment(string timeSlot)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
-            return compartments.FirstOrDefault(c => c.Id == compartmentId);
+            await Task.Delay(0);
+            var ts = timeslots.FirstOrDefault(t => t.Name == timeSlot);
+            return compartments.FirstOrDefault(c => c.Timeslot == ts);
         }
 
         public async Task SaveCompartment(Compartment pillbox)

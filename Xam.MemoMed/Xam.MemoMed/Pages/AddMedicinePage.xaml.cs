@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace Xam.MemoMed.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -10,6 +11,7 @@ namespace Xam.MemoMed.Pages
         {
             InitializeComponent();
         }
+
 
     }
 }

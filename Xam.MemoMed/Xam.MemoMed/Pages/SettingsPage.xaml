@@ -5,10 +5,15 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Settings"
+            <Label Text="{Binding HelloSettings}"
                 VerticalOptions="Start"                    
                 HorizontalOptions="CenterAndExpand" />
-            <ListView>
+            <ListView ItemsSource="{Binding Medicines}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Ingredient}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
                 
             </ListView>
         </StackLayout>
