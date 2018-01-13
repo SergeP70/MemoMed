@@ -68,11 +68,18 @@ namespace Xam.MemoMed.Domain.Services
             },
         };
 
-        public async Task<Medicine> GetMedicinById(int id)
+        public async Task<Medicine> GetMedicineById(int id)
         {
             await Task.Delay(0);
             return medicines.FirstOrDefault(m => m.Id == id);
         }
+
+        public async Task<Medicine> GetMedicineByMppCv(string mppCv)
+        {
+            await Task.Delay(0);
+            return medicines.FirstOrDefault(m => m.MppCv == mppCv);
+        }
+
 
         public async Task<IEnumerable<Medicine>> GetAll()
         {
@@ -82,7 +89,7 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task SaveMedicin(Medicine medicine)
         {
-            var oldMedicine = await GetMedicinById(medicine.Id);
+            var oldMedicine = await GetMedicineById(medicine.Id);
             oldMedicine = medicine;
         }
 

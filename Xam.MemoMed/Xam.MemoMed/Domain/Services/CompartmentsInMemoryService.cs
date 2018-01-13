@@ -148,6 +148,13 @@ namespace Xam.MemoMed.Domain.Services
             return medicines.FirstOrDefault(m => m.Id == id);
         }
 
+        public async Task<Medicine> GetMedicineByMppCv(string mppCv)
+        {
+            await Task.Delay(0);
+            return medicines.Where(m => m.MppCv == mppCv).FirstOrDefault();
+        }
+
+
         public async Task<IEnumerable<Medicine>> GetAllMedicines()
         {
             await Task.Delay(0);

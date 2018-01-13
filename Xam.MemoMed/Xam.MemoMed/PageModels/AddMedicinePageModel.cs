@@ -60,39 +60,6 @@ namespace Xam.MemoMed.PageModels
 
 
 
-        public string HelloSettings
-        {
-            get { return "Hello by FreshMvvm"; }
-        }
-
-        //public ICommand SaveBucketItemCommand => new Command(
-        //    async () => {
-        //        try
-        //        {
-        //            SaveItemState();
-
-        //            if (Validate(currentItem))
-        //            {
-        //                if (currentItem.Id == Guid.Empty)
-        //                {
-        //                    currentItem.Bucket.Items.Add(currentItem);
-        //                    currentItem.Id = Guid.NewGuid();
-        //                }
-        //                //use coremethodes to Pop pages in FreshMvvm!
-        //                await CoreMethods.PopPageModel(currentItem, false, true);
-        //            }
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Debug.WriteLine(ex.Message);
-        //            throw;
-        //        }
-        //    }
-        //);
-
-
-
         public Command ShowBarcodePageCommand
         {
             get
@@ -103,6 +70,7 @@ namespace Xam.MemoMed.PageModels
 
                     var scanner = new MobileBarcodeScanner();
                     var msg = "Geen Barcode!";
+                    string scannedBarcode="";
                     scanner.TopText = "Scan uw medicijn";
                     scanner.BottomText = "Wacht tot de barcode automatisch gescand wordt";
 
@@ -122,11 +90,18 @@ namespace Xam.MemoMed.PageModels
                     //Show the result returned.
                     if (result != null)
                     {
-                        msg = "Barcode: " + result.Text + " (" + result.BarcodeFormat + ")";
+                        scannedBarcode = result.Text;
+                        // verwijderen checksumdigit bij MSI
+                        if (result.BarcodeFormat.ToString() == "MSI")
+                            scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
+                        msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
                     }
 
                     await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
-                    
+
+                    var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
+                    //var pauze = "breakpoint";
+                    currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
                 });
             }
         }
