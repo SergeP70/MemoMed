@@ -1,6 +1,7 @@
 ﻿using FreshMvvm;
 using Xam.MemoMed.PageModels;
 using Xamarin.Forms;
+using ZXing.Mobile;
 
 namespace Xam.MemoMed
 {
@@ -9,6 +10,7 @@ namespace Xam.MemoMed
         public App()
         {
             InitializeComponent();
+
             var mainPage = new FreshTabbedNavigationContainer();
             mainPage.AddTab<PillboxPageModel>("BOX", null);
             mainPage.AddTab<AddMedicinePageModel>("+MED", null);

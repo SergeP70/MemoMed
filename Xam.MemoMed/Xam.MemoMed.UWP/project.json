@@ -2,7 +2,8 @@
   "dependencies": {
     "FreshMvvm": "2.2.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "Xamarin.Forms": "2.5.0.121934"
+    "Xamarin.Forms": "2.5.0.121934",
+    "ZXing.Net.Mobile": "2.3.2"
   },
   "frameworks": {
     "uap10.0.10586": {}

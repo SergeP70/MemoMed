@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using ZXing.Mobile;
 
 namespace Xam.MemoMed.Droid
 {
@@ -20,6 +17,8 @@ namespace Xam.MemoMed.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            MobileBarcodeScanner.Initialize(Application);
+
             LoadApplication(new App());
         }
     }

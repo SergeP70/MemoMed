@@ -15,6 +15,7 @@ namespace Xam.MemoMed.Pages
 		public BarcodePage ()
 		{
 			InitializeComponent ();
+
 		}
 	}
 }
