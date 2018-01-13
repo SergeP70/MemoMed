@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xam.MemoMed.Pages.AddMedicinePage"
+             x:Class="Xam.MemoMed.Pages.MedicineAddPage"
              NavigationPage.HasNavigationBar="False">
     <StackLayout Padding="10" Spacing="20">
         <Label Text="Toevoegen Medicijn" FontSize="Medium" HorizontalOptions="Center"/>
         <Button x:Name="btnBarcode" Text="Zoek via Barcode" FontSize="Large" Command="{Binding ShowBarcodePageCommand}" />
         <StackLayout>
-            <Entry Placeholder="Of type naam van medicijn" Keyboard="Text" FontSize="Medium" 
-                   Text="{Binding MedName}"/>
+            <Entry Placeholder="Of type naam van medicijn" Keyboard="Text" FontSize="Medium" />
             <Entry Placeholder="Soort" Keyboard="Text" FontSize="Medium" IsEnabled="False"/>
             <Entry Placeholder="Compositie/Sterkte" Keyboard="Text" FontSize="Medium" IsEnabled="False"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="CenterAndExpand" >
-            <Button Image="clock.png" Text="Tijdstip Inname" ContentLayout="Top,10" FontSize="Medium" 
-                    Command="{Binding ShowTimeToTakePageCommand}"/>
-            <Button Image="question.png" Text="Info  Medicijn" ContentLayout="Top,10" FontSize="Medium"
-                    Command="{Binding ShowInfoMedicinePageCommand}"/>
+            <Button Image="clock.png" Text="Tijdstip Inname" ContentLayout="Top,10" FontSize="Medium" />
+            <Button Image="question.png" Text="Info  Medicijn" ContentLayout="Top,10" FontSize="Medium"/>
         </StackLayout>
         <Button Text="Voeg medicijn toe" FontSize="Large" IsEnabled="False"/>
     </StackLayout>

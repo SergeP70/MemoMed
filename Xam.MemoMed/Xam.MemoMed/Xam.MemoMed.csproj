@@ -54,8 +54,10 @@
     <Compile Include="PageModels\AddMedicinePageModel.cs" />
     <Compile Include="PageModels\BarcodePageModel.cs" />
     <Compile Include="PageModels\ContactsPageModel.cs" />
+    <Compile Include="PageModels\InfoMedicinePageModel.cs" />
     <Compile Include="PageModels\PillboxPageModel.cs" />
     <Compile Include="PageModels\SettingsPageModel.cs" />
+    <Compile Include="PageModels\TimeToTakePageModel.cs" />
     <Compile Include="Pages\AddMedicinePage.xaml.cs">
       <DependentUpon>AddMedicinePage.xaml</DependentUpon>
     </Compile>
@@ -65,11 +67,17 @@
     <Compile Include="Pages\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InfoMedicinePage.xaml.cs">
+      <DependentUpon>InfoMedicinePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PillboxPage.xaml.cs">
       <DependentUpon>PillboxPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeToTakePage.xaml.cs">
+      <DependentUpon>TimeToTakePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +141,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\BarcodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\InfoMedicinePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TimeToTakePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

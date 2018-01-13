@@ -13,6 +13,7 @@ namespace Xam.MemoMed.Domain.Services
         {
             new Medicine
             {
+                Id=1,
                 Name = "Dafalgan bruistabletten 40x 500mg",
                 NickName="Dafalgan",
                 MppCv = "3391505",
@@ -23,6 +24,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Medicine
             {
+                Id=2,
                 Name = "Seretide 25/50 dosisaerosol susp. 120dos.",
                 NickName="Seretide",
                 MppCv = "1593094",
@@ -33,6 +35,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Medicine
             {
+                Id=3,
                 Name = "Xyzall siroop oploss. 200ml 2,5mg/5ml",
                 NickName="Xyzall",
                 MppCv = "2402915",
@@ -43,6 +46,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Medicine
             {
+                Id=4,
                 Name = "Ferricure 100mg/5ml oploss. 60ml 225mg/5ml",
                 NickName="Ferricure",
                 MppCv = "1000280",
@@ -53,6 +57,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Medicine
             {
+                Id=5,
                 Name = "Ventolin dosisaerosol susp. 200dos. 100Âµg/1dos.",
                 NickName="Ventolin",
                 MppCv = "135913",

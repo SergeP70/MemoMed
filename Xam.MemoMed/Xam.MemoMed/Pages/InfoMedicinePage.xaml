@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xam.MemoMed.Pages.InfoMedicinePage"
+             Title="{Binding NickName}" >
+    <StackLayout Spacing="10" Padding="10">
+        <Label Text="{Binding Name}" FontSize="Medium"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Ingrediënt" Grid.Row="0" Grid.Column="0" />
+            <Label Text="{Binding Ingredient}" 
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Hoeveelheid" Grid.Row="1" Grid.Column="0" />
+            <Label Text="{Binding IngredientQuantity}" 
+                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Code" Grid.Row="2" Grid.Column="0" />
+            <Label Text="{Binding MppCv}" 
+                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Verpakking" Grid.Row="3" Grid.Column="0" />
+            <Label Text="{Binding ContentQuantity}" 
+                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Unit" Grid.Row="4" Grid.Column="0" />
+            <Label Text="{Binding Unit}" 
+                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Prijs" Grid.Row="5" Grid.Column="0" />
+            <Label Text="{Binding Price}" 
+                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
+        </Grid>
+
+
+    </StackLayout>
+</ContentPage>
+
