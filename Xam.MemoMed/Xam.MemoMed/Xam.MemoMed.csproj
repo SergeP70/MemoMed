@@ -39,6 +39,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Domain\Abstract\ICompartmentsService.cs" />
+    <Compile Include="Domain\Abstract\IMedicinesService.cs" />
     <Compile Include="Domain\Models\Frequency.cs" />
     <Compile Include="Domain\Models\Medicine.cs" />
     <Compile Include="Domain\Models\Compartment.cs" />
