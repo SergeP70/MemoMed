@@ -1,5 +1,7 @@
 ﻿using FreshMvvm;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services;
 using Xamarin.Forms;
@@ -66,42 +68,50 @@ namespace Xam.MemoMed.PageModels
             {
                 return new Command(async () =>
                 {
-                    //CoreMethods.PushPageModel<BarcodePageModel>(null,true);
 
-                    var scanner = new MobileBarcodeScanner();
-                    var msg = "Geen Barcode!";
-                    string scannedBarcode="";
-                    scanner.TopText = "Scan uw medicijn";
-                    scanner.BottomText = "Wacht tot de barcode automatisch gescand wordt";
-
-                    var options = new ZXing.Mobile.MobileBarcodeScanningOptions();
-                    options.PossibleFormats = new List<ZXing.BarcodeFormat>()
+                    try
                     {
-                        ZXing.BarcodeFormat.MSI,
-                        ZXing.BarcodeFormat.EAN_8,
-                        ZXing.BarcodeFormat.EAN_13,
-                        ZXing.BarcodeFormat.CODE_39,
-                        ZXing.BarcodeFormat.CODE_128,
-                    };
+                        string scannedBarcode = "135913";
+                        //var scanner = new MobileBarcodeScanner();
+                        //var msg = "Geen Barcode!";
+                        //string scannedBarcode = "";
+                        //scanner.TopText = "Scan uw medicijn";
+                        //scanner.BottomText = "Wacht tot de barcode automatisch gescand wordt";
 
-                    //This will start scanning
-                    ZXing.Result result = await scanner.Scan(options);
+                        //var options = new ZXing.Mobile.MobileBarcodeScanningOptions();
+                        //options.PossibleFormats = new List<ZXing.BarcodeFormat>()
+                        //{
+                        //    ZXing.BarcodeFormat.MSI,
+                        //    ZXing.BarcodeFormat.EAN_8,
+                        //    ZXing.BarcodeFormat.EAN_13,
+                        //    ZXing.BarcodeFormat.CODE_39,
+                        //    ZXing.BarcodeFormat.CODE_128,
+                        //};
 
-                    //Show the result returned.
-                    if (result != null)
-                    {
-                        scannedBarcode = result.Text;
-                        // verwijderen checksumdigit bij MSI
-                        if (result.BarcodeFormat.ToString() == "MSI")
-                            scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
-                        msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
+                        ////This will start scanning
+                        //ZXing.Result result = await scanner.Scan(options);
+
+                        ////Show the result returned.
+                        //if (result != null)
+                        //{
+                        //    scannedBarcode = result.Text;
+                        //    // verwijderen checksumdigit bij MSI
+                        //    if (result.BarcodeFormat.ToString() == "MSI")
+                        //        scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
+                        //    msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
+                        //}
+
+                        //await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
+
+                        var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
+                        currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
+                        MedName = currentMedicine.Name;
                     }
-
-                    await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
-
-                    var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
-                    //var pauze = "breakpoint";
-                    currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                        throw;
+                    }
                 });
             }
         }
