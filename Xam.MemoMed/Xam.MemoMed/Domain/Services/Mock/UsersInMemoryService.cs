@@ -29,12 +29,22 @@ namespace Xam.MemoMed.Domain.Services.Mock
                 Age = 5,
                 Email="arthur.pille@telenet.be",
                 Phone="0477/609074"
+            },
+            new User
+            {
+                Id=3,
+                Name="Dr. Vandewalle",
+                FirstName="Christiaan",
+                Age = 58,
+                Email="dr.vandewalle@telenet.be",
+                Phone="0475/123456"
             }
+
         };
 
         public async Task<User> GetUserById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return users.FirstOrDefault(u => u.Id == id);
         }
 

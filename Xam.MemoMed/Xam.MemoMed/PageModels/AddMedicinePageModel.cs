@@ -72,6 +72,7 @@ namespace Xam.MemoMed.PageModels
 
                     try
                     {
+                        await Task.Delay(0);
                         string scannedBarcode = "135913";
                         //var scanner = new MobileBarcodeScanner();
                         //var msg = "Geen Barcode!";

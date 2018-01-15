@@ -38,6 +38,7 @@ namespace Xam.MemoMed.PageModels
 
         private async Task RefreshMedicines()
         {
+            await Task.Delay(0);
             //get all medicines
             var medicineList = medicineService.GetAll().Result;
             //bind IEnumerable<Bucket> to the ListView's ItemSource
