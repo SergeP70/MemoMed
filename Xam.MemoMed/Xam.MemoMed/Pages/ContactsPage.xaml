@@ -17,12 +17,12 @@
                 <Label Text="{Binding ContactNameError}" 
                            IsVisible="{Binding ContactNameErrorVisible}" 
                            Style="{StaticResource ErrorMessage}" />
-                <Entry Placeholder="Email" Keyboard="Email" IsEnabled="False" FontSize="Small"
+                <Entry Placeholder="Email" Keyboard="Email" FontSize="Small"
                        Text="{Binding ContactEmail}"/>
                 <Label Text="{Binding ContactEmailError}" 
                            IsVisible="{Binding ContactEmailErrorVisible}" 
                            Style="{StaticResource ErrorMessage}" />
-                <Entry Placeholder="GSM" Keyboard="Telephone" IsEnabled="False" FontSize="Small"
+                <Entry Placeholder="GSM" Keyboard="Telephone" FontSize="Small"
                        Text="{Binding ContactPhone}"/>
                 <Label Text="{Binding ContactPhoneError}" 
                            IsVisible="{Binding ContactPhoneErrorVisible}" 
