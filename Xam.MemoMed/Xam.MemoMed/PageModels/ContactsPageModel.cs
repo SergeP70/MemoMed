@@ -29,33 +29,10 @@ namespace Xam.MemoMed.PageModels
         {
             base.ViewIsAppearing(sender, e);
             // (enkel) bij opstart wordt deze methode 2x uitgevoerd
-            // CoreMethods.DisplayAlert("Page is appearing", "", "Ok");
-                        //bind contact to the Page's ItemSource
+            //CoreMethods.DisplayAlert("Page is appearing", "", "Ok");
+            //bind contact to the Page's ItemSource
             LoadContactsState();
         }
-
-
-        /// <summary>
-        /// Refreshes the currentBucket (to edit) or initializes a new one (to add)
-        /// </summary>
-        /// <returns></returns>
-        //private async Task RefreshBucket()
-        //{
-        //    if (currentBucket != null)
-        //    {
-        //        PageTitle = currentBucket.Title;
-        //        currentBucket = await bucketService.GetBucketList(currentBucket.Id);
-        //    }
-        //    else
-        //    {
-        //        PageTitle = "New Bucket List";
-        //        currentBucket = new Bucket();
-        //        currentBucket.Id = Guid.NewGuid();
-        //        currentBucket.Owner = currentUser;
-        //        currentBucket.Items = new List<BucketItem>();
-        //    }
-        //    LoadBucketState();
-        //}
 
         /// <summary>
         /// Loads the contacts properties into the VM properties for display in UI
@@ -76,8 +53,11 @@ namespace Xam.MemoMed.PageModels
             contactPerson.Name = ContactName;
             contactPerson.Email = ContactEmail;
             contactPerson.Phone = ContactPhone;
+            // To remove the validation errors when corrected:
+            ContactNameError = "";
+            ContactPhoneError = "";
+            ContactEmailError = "";
         }
-
 
         public Command SaveContactCommand
         {
@@ -88,28 +68,11 @@ namespace Xam.MemoMed.PageModels
                     SaveContactsState();
                     if (Validate(contactPerson))
                     {
-                        await CoreMethods.PushPageModel<TimeToTakePageModel>(null, true);
-
+                        await CoreMethods.DisplayAlert("Contactpersoon is bewaard", "", "Ok");
                     }
                 });
             }
         }
-
-        //public ICommand SaveBucketCommand => new Command(
-        //    async () => 
-        //    {
-        //        SaveBucketState();
-        //        if (Validate(currentBucket))
-        //        {
-        //            await bucketService.SaveBucketList(currentBucket);
-
-        //            MessagingCenter.Send(this,
-        //                Constants.MessageNames.BucketSaved, currentBucket);
-
-        //            await CoreMethods.PopPageModel(false, true);
-        //        }
-        //    });
-
 
         /// <summary>
         /// Validates the user using the validator
