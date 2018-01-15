@@ -26,7 +26,6 @@ namespace Xam.MemoMed.PageModels
             Price = currentMedicine.Price;
         }
 
-
         public int Id { get; set; }
         public string Name { get; set; }
         public string NickName { get; set; }
@@ -36,7 +35,5 @@ namespace Xam.MemoMed.PageModels
         public string Ingredient { get; set; }
         public double IngredientQuantity { get; set; }
         public double Price { get; set; }
-
-
     }
 }

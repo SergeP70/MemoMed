@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
+using Xam.MemoMed.Domain.Services.Abstract;
 
-namespace Xam.MemoMed.Domain.Services
+namespace Xam.MemoMed.Domain.Services.Mock
 {
-    public class UsersInMemoryService
+    public class UsersInMemoryService : IUsersService
     {
         private static List<User> users = new List<User>
         {
             new User
             {
+                Id=1,
                 Name="Pille",
                 FirstName="Serge",
                 Age=47,
@@ -21,15 +23,16 @@ namespace Xam.MemoMed.Domain.Services
             },
             new User
             {
-                Name="Mortelé",
-                FirstName="Nathalie",
-                Age = 39,
-                Email="nathalie.mortele@telenet.be",
+                Id=2,
+                Name="Pille",
+                FirstName="Arthur",
+                Age = 5,
+                Email="arthur.pille@telenet.be",
                 Phone="0477/609074"
             }
         };
 
-        public async Task<User> GetUserById(Guid id)
+        public async Task<User> GetUserById(int id)
         {
             await Task.Delay(Constants.Mocking.FakeDelay);
             return users.FirstOrDefault(u => u.Id == id);

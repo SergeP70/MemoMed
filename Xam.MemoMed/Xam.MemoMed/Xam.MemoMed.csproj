@@ -39,19 +39,20 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Domain\Abstract\ICompartmentsService.cs" />
-    <Compile Include="Domain\Abstract\IMedicinesService.cs" />
+    <Compile Include="Domain\Services\Abstract\ICompartmentsService.cs" />
+    <Compile Include="Domain\Services\Abstract\IMedicinesService.cs" />
     <Compile Include="Domain\Models\Frequency.cs" />
     <Compile Include="Domain\Models\Medicine.cs" />
     <Compile Include="Domain\Models\Compartment.cs" />
     <Compile Include="Domain\Models\CompartmentDetail.cs" />
     <Compile Include="Domain\Models\Timeslot.cs" />
     <Compile Include="Domain\Models\User.cs" />
-    <Compile Include="Domain\Services\CompartmentsInMemoryService.cs" />
-    <Compile Include="Domain\Services\FrequenciesInMemoryService.cs" />
-    <Compile Include="Domain\Services\MedicinesInMemoryService.cs" />
-    <Compile Include="Domain\Services\TimeslotInMemoryService.cs" />
-    <Compile Include="Domain\Services\UsersInMemoryService.cs" />
+    <Compile Include="Domain\Services\Abstract\IUsersService.cs" />
+    <Compile Include="Domain\Services\Mock\CompartmentsInMemoryService.cs" />
+    <Compile Include="Domain\Services\Mock\FrequenciesInMemoryService.cs" />
+    <Compile Include="Domain\Services\Mock\MedicinesInMemoryService.cs" />
+    <Compile Include="Domain\Services\Mock\TimeslotInMemoryService.cs" />
+    <Compile Include="Domain\Services\Mock\UsersInMemoryService.cs" />
     <Compile Include="Extensions\ImageResourceExtension.cs" />
     <Compile Include="PageModels\AddMedicinePageModel.cs" />
     <Compile Include="PageModels\BarcodePageModel.cs" />

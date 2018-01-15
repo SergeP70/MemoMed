@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
+using Xam.MemoMed.Domain.Services.Abstract;
 
-namespace Xam.MemoMed.Domain.Services
+namespace Xam.MemoMed.Domain.Services.Mock
 {
-    public class MedicinesInMemoryService
+    public class MedicinesInMemoryService : IMedicinesService
     {
         private static List<Medicine> medicines = new List<Medicine>
         {

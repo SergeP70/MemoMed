@@ -12,6 +12,5 @@ namespace Xam.MemoMed.Pages
             InitializeComponent();
         }
 
-
     }
 }

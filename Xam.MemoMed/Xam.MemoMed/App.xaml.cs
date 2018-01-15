@@ -1,4 +1,6 @@
 ﻿using FreshMvvm;
+using Xam.MemoMed.Domain.Services.Abstract;
+using Xam.MemoMed.Domain.Services.Mock;
 using Xam.MemoMed.PageModels;
 using Xamarin.Forms;
 using ZXing.Mobile;
@@ -10,6 +12,11 @@ namespace Xam.MemoMed
         public App()
         {
             InitializeComponent();
+
+            // Registatie van de abstradte interfaces met een IoC Container
+            FreshIOC.Container.Register<IMedicinesService>(new MedicinesInMemoryService());
+            FreshIOC.Container.Register<ICompartmentsService>(new CompartmentsInMemoryService());
+            FreshIOC.Container.Register<IUsersService>(new UsersInMemoryService());
 
             var mainPage = new FreshTabbedNavigationContainer();
             mainPage.AddTab<PillboxPageModel>("BOX", null);

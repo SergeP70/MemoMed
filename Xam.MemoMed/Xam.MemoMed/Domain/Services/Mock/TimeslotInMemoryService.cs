@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
 using Xamarin.Forms;
 
-namespace Xam.MemoMed.Domain.Services
+namespace Xam.MemoMed.Domain.Services.Mock
 {
     public class TimeslotInMemoryService
     {
@@ -14,25 +14,25 @@ namespace Xam.MemoMed.Domain.Services
         {
             new Timeslot
             {
-                Name="Ochtend",
+                Name="Morning",
                 TimeslotStart=new TimeSpan(7,0,0),
                 TimeslotEnd=new TimeSpan(9,0,0),
             },
             new Timeslot
             {
-                Name="Middag",
+                Name="Noon",
                 TimeslotStart=new TimeSpan(12,0,0),
                 TimeslotEnd=new TimeSpan(14,0,0),
             },
             new Timeslot
             {
-                Name="Avond",
+                Name="Evening",
                 TimeslotStart=new TimeSpan(18,0,0),
                 TimeslotEnd=new TimeSpan(20,0,0),
             },
             new Timeslot
             {
-                Name="Nacht",
+                Name="Night",
                 TimeslotStart=new TimeSpan(22,0,0),
                 TimeslotEnd=new TimeSpan(24,0,0),
             },

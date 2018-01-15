@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
 
-namespace Xam.MemoMed.Domain.Services
+namespace Xam.MemoMed.Domain.Services.Mock
 {
     public class FrequenciesInMemoryService
     {

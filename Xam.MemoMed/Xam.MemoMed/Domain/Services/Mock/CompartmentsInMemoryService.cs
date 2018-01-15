@@ -5,34 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services;
+using Xam.MemoMed.Domain.Services.Abstract;
 
-namespace Xam.MemoMed.Domain.Services
+namespace Xam.MemoMed.Domain.Services.Mock
 {
-    public class CompartmentsInMemoryService
+    public class CompartmentsInMemoryService : ICompartmentsService
     {
         // Seeding the Timeslots
         private static List<Timeslot> timeslots = new List<Timeslot>
         {
             new Timeslot
             {
+                Id=1,
                 Name="Morning",
                 TimeslotStart=new TimeSpan(7,0,0),
                 TimeslotEnd=new TimeSpan(9,0,0),
             },
             new Timeslot
             {
+                Id=2,
                 Name="Noon",
                 TimeslotStart=new TimeSpan(12,0,0),
                 TimeslotEnd=new TimeSpan(14,0,0),
             },
             new Timeslot
             {
+                Id=3,
                 Name="Evening",
                 TimeslotStart=new TimeSpan(18,0,0),
                 TimeslotEnd=new TimeSpan(20,0,0),
             },
             new Timeslot
             {
+                Id=4,
                 Name="Night",
                 TimeslotStart=new TimeSpan(22,0,0),
                 TimeslotEnd=new TimeSpan(24,0,0),
@@ -41,7 +46,7 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task<Timeslot> GetTimeslotById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return timeslots.FirstOrDefault(t => t.Id == id);
         }
 
@@ -56,6 +61,7 @@ namespace Xam.MemoMed.Domain.Services
         {
             new User
             {
+                Id=1,
                 Name="Pille",
                 FirstName="Serge",
                 Age=47,
@@ -64,11 +70,18 @@ namespace Xam.MemoMed.Domain.Services
             }
         };
 
-        public async Task<User> GetUserById(Guid id)
+        public async Task<User> GetUserById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return users.FirstOrDefault(u => u.Id == id);
         }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            await Task.Delay(0);
+            return users;
+        }
+
 
         public async Task SaveUser(User user)
         {
@@ -173,6 +186,7 @@ namespace Xam.MemoMed.Domain.Services
         {
             new Compartment
             {
+                Id=1,
                 Date= new DateTime(2018,01,01),
                 Timeslot= timeslots.Where(t => t.Name == "Morning").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
@@ -198,6 +212,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Compartment
             {
+                Id=2,
                 Date= new DateTime(2018,01,01),
                 Timeslot= timeslots.Where(t => t.Name == "Noon").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
@@ -213,6 +228,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Compartment
             {
+                Id=3,
                 Date= new DateTime(2018,01,01),
                 Timeslot= timeslots.Where(t => t.Name == "Evening").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
@@ -233,6 +249,7 @@ namespace Xam.MemoMed.Domain.Services
             },
             new Compartment
             {
+                Id=4,
                 Date= new DateTime(2018,01,01),
                 Timeslot= timeslots.Where(t => t.Name == "Night").FirstOrDefault(),
                 Consumer = users.Where(u => u.Name=="Pille").FirstOrDefault(),
@@ -248,9 +265,9 @@ namespace Xam.MemoMed.Domain.Services
             }
         };
 
-        public async Task<IEnumerable<Compartment>> GetCompartmentsForUser(Guid userid)
+        public async Task<IEnumerable<Compartment>> GetCompartmentsForUser(int userid)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return compartments.Where(c => c.Consumer.Id == userid);
         }
 
@@ -263,7 +280,7 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task SaveCompartment(Compartment pillbox)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             var savedCompartment = compartments.FirstOrDefault(c => c.Id == pillbox.Id);
             if (savedCompartment == null) // this is a new compartment
             {
@@ -280,7 +297,7 @@ namespace Xam.MemoMed.Domain.Services
 
         public async Task DeleteCompartment(int compartmentId)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             Compartment pillbox = compartments.FirstOrDefault(c => c.Id == compartmentId);
             compartments.Remove(pillbox);
         }

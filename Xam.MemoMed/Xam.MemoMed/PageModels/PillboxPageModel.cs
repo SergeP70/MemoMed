@@ -1,22 +1,40 @@
 ﻿using FreshMvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
-using Xam.MemoMed.Domain.Services;
+using Xam.MemoMed.Domain.Services.Abstract;
 
 namespace Xam.MemoMed.PageModels
 {
     public class PillboxPageModel : FreshBasePageModel
     {
-        CompartmentsInMemoryService compartmentsService;
+        ICompartmentsService compartmentsService;
 
-        public PillboxPageModel()
+        public PillboxPageModel(ICompartmentsService compartmentsService)
         {
-            this.compartmentsService = new CompartmentsInMemoryService();
-            
+            this.compartmentsService = compartmentsService;
+        }
+
+        /// <summary>
+        /// This methods is called when the View is appearing
+        /// </summary>
+        protected override void ViewIsAppearing(object sender, System.EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);            
+            // (enkel) bij opstart wordt deze methode 2x uitgevoerd
+            // CoreMethods.DisplayAlert("Page is appearing", "", "Ok");
+            LoadPillboxState();
+        }
+
+        /// <summary>
+        /// Loads the currentBucket list properties into the VM properties for display in UI
+        /// </summary>
+        private void LoadPillboxState()
+        {
             //get all medicines in the morning
             var compartmentMorning = compartmentsService.GetCompartment("Morning").Result;
-            //bind IEnumerable<Bucket> to the ListView's ItemSource
+           //bind IEnumerable<Bucket> to the ListView's ItemSource
             MedicinesInMorning = null;    //Important! ensure the list is empty first to force refresh!
             MedicinesInMorning = new ObservableCollection<CompartmentDetail>(compartmentMorning.Details);
 
@@ -35,6 +53,7 @@ namespace Xam.MemoMed.PageModels
             MedicinesInNight = null;  
             MedicinesInNight = new ObservableCollection<CompartmentDetail>(compartmentNight.Details);
         }
+
 
         private ObservableCollection<CompartmentDetail> medicinesInMorning;
         public ObservableCollection<CompartmentDetail> MedicinesInMorning

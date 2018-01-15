@@ -6,17 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
-using Xam.MemoMed.Domain.Services;
+using Xam.MemoMed.Domain.Services.Abstract;
+using Xam.MemoMed.Domain.Services.Mock;
 
 namespace Xam.MemoMed.PageModels
 {
     public class SettingsPageModel : FreshBasePageModel
     {
-        MedicinesInMemoryService medicineService;
+        IMedicinesService medicineService;
 
-        public SettingsPageModel()
+        public SettingsPageModel(IMedicinesService medicineService)
         {
-            this.medicineService = new MedicinesInMemoryService();
+            this.medicineService = medicineService;
             //get all medicines
             var medicineList = medicineService.GetAll().Result;
             //bind IEnumerable<Bucket> to the ListView's ItemSource

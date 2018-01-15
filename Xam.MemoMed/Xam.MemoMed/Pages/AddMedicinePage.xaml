@@ -18,6 +18,7 @@
             <Button Image="question.png" Text="Info  Medicijn" ContentLayout="Top,10" FontSize="Medium"
                     Command="{Binding ShowInfoMedicinePageCommand}"/>
         </StackLayout>
-        <Button Text="Voeg medicijn toe" FontSize="Large" IsEnabled="False"/>
+        <Button Text="Voeg medicijn toe" FontSize="Large" IsEnabled="True"
+                Command="{Binding PutMedInCompartment}"/>
     </StackLayout>
 </ContentPage>
