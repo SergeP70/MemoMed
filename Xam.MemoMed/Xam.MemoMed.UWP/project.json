@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "FluentValidation": "7.3.4",
     "FreshMvvm": "2.2.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Xam.Plugins.Messaging": "5.0.0",

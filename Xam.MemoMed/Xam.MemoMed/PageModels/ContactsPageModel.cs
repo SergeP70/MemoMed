@@ -69,7 +69,6 @@ namespace Xam.MemoMed.PageModels
                     SaveContactsState();
                     if (Validate(contactPerson))
                     {
-                        await CoreMethods.DisplayAlert("Contactpersoon is opgeslagen ontvangt een SMS ter bevestiging", "", "Ok");
                         var smsMessenger = CrossMessaging.Current.SmsMessenger;
                         var emailMessenger = CrossMessaging.Current.EmailMessenger;
                         if (smsMessenger.CanSendSmsInBackground)
@@ -77,10 +76,11 @@ namespace Xam.MemoMed.PageModels
                             smsMessenger.SendSmsInBackground("0471501136", 
                                 "Bericht van MemoMed: U krijgt deze automatische SMS omdat u aangeduid bent als contactpersoon van Serge Pille");
                         }
-                        //if (emailMessenger.CanSendEmail)
-                        //{
-                        //    emailMessenger.SendEmail("serge.pille@telenet.be", "Nieuwe contactpersoon van MemoMed", "Beste contact, u bent gekozen als contactpersoon van MemoMed.");
-                        //}
+                        await CoreMethods.DisplayAlert("Contactpersoon is opgeslagen ontvangt een SMS ter bevestiging", "", "Ok");
+                        if (emailMessenger.CanSendEmail)
+                        {
+                            emailMessenger.SendEmail("serge.pille@telenet.be", "Nieuwe contactpersoon van MemoMed", "Beste contact, u bent gekozen als contactpersoon van MemoMed.");
+                        }
                     }
                 });
             }
