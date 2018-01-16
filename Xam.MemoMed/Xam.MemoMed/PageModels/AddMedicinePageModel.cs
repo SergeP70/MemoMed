@@ -61,15 +61,12 @@ namespace Xam.MemoMed.PageModels
         public double IngredientQuantity { get; set; }
         public double Price { get; set; }
 
-
-
         public Command ShowBarcodePageCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-
                     try
                     {
                         await Task.Delay(0);
@@ -103,9 +100,9 @@ namespace Xam.MemoMed.PageModels
                         //    msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
                         //}
 
-                        //await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
+                        ////await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
+                        ////var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
 
-                        var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
                         currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
                         MedName = currentMedicine.Name;
                     }
