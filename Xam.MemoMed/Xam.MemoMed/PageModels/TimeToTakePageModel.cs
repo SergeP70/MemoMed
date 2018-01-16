@@ -11,7 +11,7 @@ namespace Xam.MemoMed.PageModels
     {
         public string HelloTimeToTake
         {
-            get { return "Time to take Medicine"; }
+            get { return "User Saved correctly: Time to take Medicine"; }
         }
 
     }

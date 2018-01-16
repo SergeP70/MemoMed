@@ -11,6 +11,10 @@
                 <On Platform="Android">0, 10, 0, 0</On>
                 <On Platform="Windows">0, 10, 0, 0</On>
             </OnPlatform>
+            <OnPlatform x:Key="ErrorMessageFontSize" x:TypeArguments="NamedSize">
+                <On Platform="iOS, Android" Value="Small"></On>
+                <On Platform="Windows" Value="Micro"></On>
+            </OnPlatform>
 
             <!-- Common Colors 
             Timeslot Colors:
@@ -25,6 +29,16 @@
             <Color x:Key="TsNoonColor">#FFE4B5</Color>
             <Color x:Key="TsEveningColor">#E6E6FA</Color>
             <Color x:Key="TsNightColor">#B0C4DE</Color>
+            <Color x:Key="ColorError">#f46842</Color>
+            <Color x:Key="ColorAccent">#ffffff</Color>
+
+            <!-- Explicit Styles-->
+            <Style x:Key="ErrorMessage" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorError}" />
+                <Setter Property="FontSize" Value="{StaticResource ErrorMessageFontSize}" />
+                <Setter Property="Margin" Value="2,-5,7,0" />
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
 
             <!-- Images Timeslot Views, voorlopig niet gebruikt-->
             <Style x:Key="imageTsStyle" TargetType="Image">

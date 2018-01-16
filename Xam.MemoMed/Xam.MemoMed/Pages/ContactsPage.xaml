@@ -12,9 +12,23 @@
                 <Label Text="Verwittig iemand bij niet inname" VerticalOptions="Center" />
             </StackLayout>
             <StackLayout x:Name="slInformer" Padding="10,0,10,0" IsEnabled="False">
-                <Entry Placeholder="Naam" Keyboard="Text" IsEnabled="True" FontSize="Small"/>
-                <Entry Placeholder="Email" Keyboard="Email" IsEnabled="False" FontSize="Small"/>
-                <Entry Placeholder="GSM" Keyboard="Telephone" IsEnabled="False" FontSize="Small"/>
+                <Entry Placeholder="Naam" Keyboard="Text" IsEnabled="True" FontSize="Small"
+                       Text="{Binding ContactName}"/>
+                <Label Text="{Binding ContactNameError}" 
+                           IsVisible="{Binding ContactNameErrorVisible}" 
+                           Style="{StaticResource ErrorMessage}" />
+                <Entry Placeholder="Email" Keyboard="Email" FontSize="Small"
+                       Text="{Binding ContactEmail}"/>
+                <Label Text="{Binding ContactEmailError}" 
+                           IsVisible="{Binding ContactEmailErrorVisible}" 
+                           Style="{StaticResource ErrorMessage}" />
+                <Entry Placeholder="GSM" Keyboard="Telephone" FontSize="Small"
+                       Text="{Binding ContactPhone}"/>
+                <Label Text="{Binding ContactPhoneError}" 
+                           IsVisible="{Binding ContactPhoneErrorVisible}" 
+                           Style="{StaticResource ErrorMessage}" />
+                <Button x:Name="btnSaveContact" Text="Bewaar contactpersoon" FontSize="Small" 
+                        Command="{Binding SaveContactCommand}" />
             </StackLayout>
             <StackLayout>
                 <Label Text="Huisarts" FontSize="Medium" />
