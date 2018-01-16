@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FreshMvvm;
+using Plugin.Messaging;
 using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services.Abstract;
 using Xam.MemoMed.Domain.Validators;
@@ -17,8 +18,8 @@ namespace Xam.MemoMed.PageModels
         {
             this.usersService = usersService;
             userValidator = new UserValidator();
-            // for now: just get user 2
-            contactPerson = usersService.GetUserById(2).Result;
+            // for now: just get user 1
+            contactPerson = usersService.GetUserById(1).Result;
         }
 
 
@@ -68,7 +69,18 @@ namespace Xam.MemoMed.PageModels
                     SaveContactsState();
                     if (Validate(contactPerson))
                     {
-                        await CoreMethods.DisplayAlert("Contactpersoon is bewaard", "", "Ok");
+                        await CoreMethods.DisplayAlert("Contactpersoon is opgeslagen ontvangt een SMS ter bevestiging", "", "Ok");
+                        var smsMessenger = CrossMessaging.Current.SmsMessenger;
+                        var emailMessenger = CrossMessaging.Current.EmailMessenger;
+                        if (smsMessenger.CanSendSmsInBackground)
+                        {
+                            smsMessenger.SendSmsInBackground("0471501136", 
+                                "Bericht van MemoMed: U krijgt deze automatische SMS omdat u aangeduid bent als contactpersoon van Serge Pille");
+                        }
+                        //if (emailMessenger.CanSendEmail)
+                        //{
+                        //    emailMessenger.SendEmail("serge.pille@telenet.be", "Nieuwe contactpersoon van MemoMed", "Beste contact, u bent gekozen als contactpersoon van MemoMed.");
+                        //}
                     }
                 });
             }
