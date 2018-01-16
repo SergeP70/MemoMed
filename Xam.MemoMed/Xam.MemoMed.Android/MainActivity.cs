@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Plugin.Messaging;
 using ZXing.Mobile;
 
 namespace Xam.MemoMed.Droid
@@ -18,6 +19,8 @@ namespace Xam.MemoMed.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             MobileBarcodeScanner.Initialize(Application);
+
+            CrossMessaging.Current.Settings().Email.UseStrictMode = true;
 
             LoadApplication(new App());
         }

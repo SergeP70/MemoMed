@@ -15,11 +15,11 @@ namespace Xam.MemoMed.Domain.Services.Mock
             new User
             {
                 Id=1,
-                Name="Pille",
+                Name="Pille Serge",
                 FirstName="Serge",
                 Age=47,
-                Email="serge@pille.be",
-                Phone="0471/276717"
+                Email="serge.pille@telenet.be",
+                Phone="0471501136"
             },
             new User
             {
@@ -39,7 +39,6 @@ namespace Xam.MemoMed.Domain.Services.Mock
                 Email="dr.vandewalle@telenet.be",
                 Phone="0475/123456"
             }
-
         };
 
         public async Task<User> GetUserById(int id)
