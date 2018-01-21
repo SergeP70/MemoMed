@@ -17,6 +17,7 @@ namespace Xam.MemoMed
             FreshIOC.Container.Register<IMedicinesService>(new MedicinesInMemoryService());
             FreshIOC.Container.Register<ICompartmentsService>(new CompartmentsInMemoryService());
             FreshIOC.Container.Register<IUsersService>(new UsersInMemoryService());
+            FreshIOC.Container.Register<ITimeslotsService>(new TimeslotInMemoryService());
 
             var mainPage = new FreshTabbedNavigationContainer();
             mainPage.AddTab<PillboxPageModel>("BOX", null);

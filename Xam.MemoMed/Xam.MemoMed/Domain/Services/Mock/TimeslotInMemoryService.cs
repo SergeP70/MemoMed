@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xam.MemoMed.Domain.Models;
+using Xam.MemoMed.Domain.Services.Abstract;
 using Xamarin.Forms;
 
 namespace Xam.MemoMed.Domain.Services.Mock
 {
-    public class TimeslotInMemoryService
+    public class TimeslotInMemoryService : ITimeslotsService
     {
         public static List<Timeslot> timeslots = new List<Timeslot>
         {
