@@ -47,6 +47,7 @@
     <Compile Include="Domain\Models\CompartmentDetail.cs" />
     <Compile Include="Domain\Models\Timeslot.cs" />
     <Compile Include="Domain\Models\User.cs" />
+    <Compile Include="Domain\Services\Abstract\ITimeslotsService.cs" />
     <Compile Include="Domain\Services\Abstract\IUsersService.cs" />
     <Compile Include="Domain\Services\Mock\CompartmentsInMemoryService.cs" />
     <Compile Include="Domain\Services\Mock\FrequenciesInMemoryService.cs" />

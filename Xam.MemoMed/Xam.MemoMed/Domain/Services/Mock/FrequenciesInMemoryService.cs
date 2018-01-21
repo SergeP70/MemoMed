@@ -20,7 +20,7 @@ namespace Xam.MemoMed.Domain.Services.Mock
 
         public async Task<Frequency> GetFrequencyById(int id)
         {
-            await Task.Delay(Constants.Mocking.FakeDelay);
+            await Task.Delay(0);
             return frequencies.FirstOrDefault(f => f.Id == id);
         }
 

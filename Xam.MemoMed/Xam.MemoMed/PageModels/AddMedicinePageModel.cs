@@ -69,39 +69,39 @@ namespace Xam.MemoMed.PageModels
                 {
                     try
                     {
-                        await Task.Delay(0);
-                        string scannedBarcode = "135913";
-                        //var scanner = new MobileBarcodeScanner();
-                        //var msg = "Geen Barcode!";
-                        //string scannedBarcode = "";
-                        //scanner.TopText = "Scan uw medicijn";
-                        //scanner.BottomText = "Wacht tot de barcode automatisch gescand wordt";
+                        //await Task.Delay(0);
+                        //string scannedBarcode = "135913";
+                        var scanner = new MobileBarcodeScanner();
+                        var msg = "Geen Barcode!";
+                        string scannedBarcode = "";
+                        scanner.TopText = "Scan uw medicijn";
+                        scanner.BottomText = "Wacht tot de barcode automatisch gescand wordt";
 
-                        //var options = new ZXing.Mobile.MobileBarcodeScanningOptions();
-                        //options.PossibleFormats = new List<ZXing.BarcodeFormat>()
-                        //{
-                        //    ZXing.BarcodeFormat.MSI,
-                        //    ZXing.BarcodeFormat.EAN_8,
-                        //    ZXing.BarcodeFormat.EAN_13,
-                        //    ZXing.BarcodeFormat.CODE_39,
-                        //    ZXing.BarcodeFormat.CODE_128,
-                        //};
+                        var options = new ZXing.Mobile.MobileBarcodeScanningOptions();
+                        options.PossibleFormats = new List<ZXing.BarcodeFormat>()
+                        {
+                            ZXing.BarcodeFormat.MSI,
+                            ZXing.BarcodeFormat.EAN_8,
+                            ZXing.BarcodeFormat.EAN_13,
+                            ZXing.BarcodeFormat.CODE_39,
+                            ZXing.BarcodeFormat.CODE_128,
+                        };
 
-                        ////This will start scanning
-                        //ZXing.Result result = await scanner.Scan(options);
+                        //This will start scanning
+                        ZXing.Result result = await scanner.Scan(options);
 
-                        ////Show the result returned.
-                        //if (result != null)
-                        //{
-                        //    scannedBarcode = result.Text;
-                        //    // verwijderen checksumdigit bij MSI
-                        //    if (result.BarcodeFormat.ToString() == "MSI")
-                        //        scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
-                        //    msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
-                        //}
+                        //Show the result returned.
+                        if (result != null)
+                        {
+                            scannedBarcode = result.Text;
+                            // verwijderen checksumdigit bij MSI
+                            if (result.BarcodeFormat.ToString() == "MSI")
+                                scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
+                            msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
+                        }
 
-                        ////await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
-                        ////var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
+                        //await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
+                        //var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
 
                         currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
                         MedName = currentMedicine.Name;
