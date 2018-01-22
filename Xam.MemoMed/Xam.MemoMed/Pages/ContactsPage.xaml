@@ -10,12 +10,19 @@
             <StackLayout Orientation="Horizontal" Spacing="10" >
                 <Switch x:Name="swInformContact" Toggled="OnSwInformContactToggled"></Switch>
                 <Label Text="Verwittig iemand bij niet inname" VerticalOptions="Center" />
+                <Button x:Name="btnSearchContact" Text="S" FontSize="Small"
+                        Command="{Binding SearchContactCommand}" />
             </StackLayout>
             <StackLayout x:Name="slInformer" Padding="10,0,10,0" IsEnabled="False">
-                <Entry Placeholder="Naam" Keyboard="Text" IsEnabled="True" FontSize="Small"
-                       Text="{Binding ContactName}"/>
-                <Label Text="{Binding ContactNameError}" 
-                           IsVisible="{Binding ContactNameErrorVisible}" 
+                <Entry Placeholder="Voornaam" Keyboard="Text" FontSize="Small"
+                       Text="{Binding ContactFirstName}"/>
+                <Label Text="{Binding ContactFirstNameError}" 
+                           IsVisible="{Binding ContactFirstNameErrorVisible}" 
+                           Style="{StaticResource ErrorMessage}" />
+                <Entry Placeholder="Familienaam" Keyboard="Text" FontSize="Small"
+                       Text="{Binding ContactLastName}"/>
+                <Label Text="{Binding ContactLastNameError}" 
+                           IsVisible="{Binding ContactLastNameErrorVisible}" 
                            Style="{StaticResource ErrorMessage}" />
                 <Entry Placeholder="Email" Keyboard="Email" FontSize="Small"
                        Text="{Binding ContactEmail}"/>

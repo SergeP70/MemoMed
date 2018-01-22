@@ -13,7 +13,7 @@ namespace Xam.MemoMed
         {
             InitializeComponent();
 
-            // Registatie van de abstradte interfaces met een IoC Container
+            // Registatie van de abstracte interfaces met een IoC Container
             FreshIOC.Container.Register<IMedicinesService>(new MedicinesInMemoryService());
             FreshIOC.Container.Register<ICompartmentsService>(new CompartmentsInMemoryService());
             FreshIOC.Container.Register<IUsersService>(new UsersInMemoryService());

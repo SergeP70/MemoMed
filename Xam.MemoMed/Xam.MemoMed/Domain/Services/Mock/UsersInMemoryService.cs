@@ -15,7 +15,7 @@ namespace Xam.MemoMed.Domain.Services.Mock
             new User
             {
                 Id=1,
-                Name="Pille Serge",
+                LastName = "Pille",
                 FirstName="Serge",
                 Age=47,
                 Email="serge.pille@telenet.be",
@@ -24,7 +24,7 @@ namespace Xam.MemoMed.Domain.Services.Mock
             new User
             {
                 Id=2,
-                Name="Pille",
+                LastName="Pille",
                 FirstName="Arthur",
                 Age = 5,
                 Email="arthur.pille@telenet.be",
@@ -33,8 +33,8 @@ namespace Xam.MemoMed.Domain.Services.Mock
             new User
             {
                 Id=3,
-                Name="Dr. Vandewalle",
-                FirstName="Christiaan",
+                LastName="Vandewalle",
+                FirstName="Dr. Christiaan",
                 Age = 58,
                 Email="dr.vandewalle@telenet.be",
                 Phone="0475/123456"

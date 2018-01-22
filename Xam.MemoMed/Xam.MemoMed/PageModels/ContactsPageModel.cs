@@ -40,7 +40,8 @@ namespace Xam.MemoMed.PageModels
         /// </summary>
         private void LoadContactsState()
         {
-            ContactName = contactPerson.Name;
+            ContactFirstName = contactPerson.FirstName;
+            ContactLastName = contactPerson.LastName;
             ContactEmail = contactPerson.Email;
             ContactPhone = contactPerson.Phone;
         }
@@ -51,11 +52,13 @@ namespace Xam.MemoMed.PageModels
         /// </summary>
         private void SaveContactsState()
         {
-            contactPerson.Name = ContactName;
+            contactPerson.FirstName = ContactFirstName;
+            contactPerson.LastName = ContactLastName;
             contactPerson.Email = ContactEmail;
             contactPerson.Phone = ContactPhone;
             // To remove the validation errors when corrected:
-            ContactNameError = "";
+            ContactFirstNameError = "";
+            ContactLastNameError = "";
             ContactPhoneError = "";
             ContactEmailError = "";
         }
@@ -86,6 +89,17 @@ namespace Xam.MemoMed.PageModels
             }
         }
 
+        public Command SearchContactCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    CoreMethods.PushPageModel<SearchContactPageModel>(null, true);
+                });
+            }
+        }
+
         /// <summary>
         /// Validates the user using the validator
         /// </summary>
@@ -97,9 +111,13 @@ namespace Xam.MemoMed.PageModels
             //loop through error to identify properties
             foreach (var error in validationResult.Errors)
             {
-                if (error.PropertyName == nameof(user.Name))
+                if (error.PropertyName == nameof(user.FirstName))
                 {
-                    ContactNameError = error.ErrorMessage;
+                    ContactFirstNameError = error.ErrorMessage;
+                }
+                if (error.PropertyName == nameof(user.LastName))
+                {
+                    ContactLastNameError = error.ErrorMessage;
                 }
                 if (error.PropertyName == nameof(user.Email))
                 {
@@ -114,32 +132,61 @@ namespace Xam.MemoMed.PageModels
         }
 
 
-        private string contactName;
-        public string ContactName
+        private string contactFirstName;
+        public string ContactFirstName
         {
-            get { return contactName; }
+            get { return contactFirstName; }
             set
             {
-                contactName = value;
-                RaisePropertyChanged(nameof(ContactName));
+                contactFirstName = value;
+                RaisePropertyChanged(nameof(ContactFirstName));
             }
         }
 
-        private string contactNameError;
-        public string ContactNameError
+        private string contactLastName;
+        public string ContactLastName
         {
-            get { return contactNameError; }
+            get { return contactLastName; }
             set
             {
-                contactNameError = value;
-                RaisePropertyChanged(nameof(ContactNameError));
-                RaisePropertyChanged(nameof(ContactNameErrorVisible));
+                contactLastName = value;
+                RaisePropertyChanged(nameof(ContactLastName));
             }
         }
 
-        public bool ContactNameErrorVisible
+        private string contactFirstNameError;
+        public string ContactFirstNameError
         {
-            get { return !string.IsNullOrWhiteSpace(ContactNameError); }
+            get { return contactFirstNameError; }
+            set
+            {
+                contactFirstNameError = value;
+                RaisePropertyChanged(nameof(ContactFirstNameError));
+                RaisePropertyChanged(nameof(ContactFirstNameErrorVisible));
+            }
+        }
+
+        public bool ContactFirstNameErrorVisible
+        {
+            get { return !string.IsNullOrWhiteSpace(ContactFirstNameError); }
+        }
+
+
+        private string contactLastNameError;
+        public string ContactLastNameError
+        {
+            get { return contactLastNameError; }
+            set
+            {
+                contactLastNameError = value;
+                RaisePropertyChanged(nameof(ContactLastNameError));
+                RaisePropertyChanged(nameof(ContactLastNameErrorVisible));
+            }
+        }
+
+        public bool ContactLastNameErrorVisible
+        {
+            get { return !string.IsNullOrWhiteSpace(ContactLastNameError); }
         }
 
         private string contactEmail;

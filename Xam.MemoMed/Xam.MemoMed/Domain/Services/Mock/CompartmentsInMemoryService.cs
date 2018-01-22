@@ -62,7 +62,7 @@ namespace Xam.MemoMed.Domain.Services.Mock
             new User
             {
                 Id=1,
-                Name="Pille",
+                LastName="Pille",
                 FirstName="Serge",
                 Age=47,
                 Email="serge@pille.be",

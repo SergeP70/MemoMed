@@ -12,9 +12,13 @@ namespace Xam.MemoMed.Domain.Validators
     {
         public UserValidator()
         {
-            RuleFor(user => user.Name)
+            RuleFor(user => user.FirstName)
                 .NotEmpty()
-                .WithMessage("Naam is verplicht");
+                .WithMessage("Voornaam is verplicht");
+
+            RuleFor(user => user.LastName)
+                .NotEmpty()
+                .WithMessage("Familienaam is verplicht");
 
             RuleFor(user => user.Email)
                 .NotEmpty()
