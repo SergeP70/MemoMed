@@ -97,11 +97,12 @@ namespace Xam.MemoMed.PageModels
                             // verwijderen checksumdigit bij MSI
                             if (result.BarcodeFormat.ToString() == "MSI")
                                 scannedBarcode = scannedBarcode.Remove(scannedBarcode.Length - 1);
+                            // Wanneer apotheker eigen EAN128 code gebruikt:
+                            // TODO: haal CNK uit EAN128
                             msg = "Barcode: " + scannedBarcode + " (" + result.BarcodeFormat + ")";
                         }
 
                         //await CoreMethods.DisplayAlert("Resultaat", msg, "Ok");
-                        //var scannedMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
 
                         currentMedicine = medicinesService.GetMedicineByMppCv(scannedBarcode).Result;
                         MedName = currentMedicine.Name;

@@ -28,9 +28,7 @@ namespace Xam.MemoMed.PageModels
         public ICommand SelectContactCommand => new Command<User>(
             async (User selectedContact) => 
             {
-                //await Task.Delay(0);
-                Debug.WriteLine(selectedContact.Name);
-                //await CoreMethods.PushPageModel<TimeToTakePageModel>(null, false, true);
+                //Debug.WriteLine(selectedContact.Name);
                 await CoreMethods.PopPageModel(selectedContact, true, true);
             }
         );
