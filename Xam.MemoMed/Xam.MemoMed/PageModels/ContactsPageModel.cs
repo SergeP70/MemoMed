@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FreshMvvm;
 using Plugin.Messaging;
+using System.Diagnostics;
 using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services.Abstract;
 using Xam.MemoMed.Domain.Validators;
@@ -34,6 +35,23 @@ namespace Xam.MemoMed.PageModels
             //bind contact to the Page's ItemSource
             LoadContactsState();
         }
+
+        /// <summary>
+        /// Executed when returning to this Model from a previous model
+        /// </summary>
+        /// <param name="returnedData"></param>
+        public override void ReverseInit(object returnedData)
+        {
+            base.ReverseInit(returnedData);
+            if (returnedData is User)
+            {
+                //refresh list, to update this item visually
+                Debug.WriteLine(returnedData.ToString());
+                contactPerson = (User)returnedData;
+                LoadContactsState();
+            }
+        }
+
 
         /// <summary>
         /// Loads the contacts properties into the VM properties for display in UI
