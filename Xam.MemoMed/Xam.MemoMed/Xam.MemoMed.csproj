@@ -38,7 +38,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\BindableBehavior.cs" />
+    <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
     <Compile Include="Domain\Services\Abstract\ICompartmentsService.cs" />
     <Compile Include="Domain\Services\Abstract\IMedicinesService.cs" />
     <Compile Include="Domain\Models\Frequency.cs" />
