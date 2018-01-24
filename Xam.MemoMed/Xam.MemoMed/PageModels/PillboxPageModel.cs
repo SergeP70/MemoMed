@@ -27,6 +27,8 @@ namespace Xam.MemoMed.PageModels
             LoadPillboxState();
         }
 
+
+
         /// <summary>
         /// Loads the currentBucket list properties into the VM properties for display in UI
         /// </summary>

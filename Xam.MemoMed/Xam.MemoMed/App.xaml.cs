@@ -1,4 +1,10 @@
 ﻿using FreshMvvm;
+using PCLStorage;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services.Abstract;
 using Xam.MemoMed.Domain.Services.Mock;
 using Xam.MemoMed.PageModels;
@@ -9,6 +15,7 @@ namespace Xam.MemoMed
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
@@ -28,8 +35,9 @@ namespace Xam.MemoMed
         }
 
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
+
             // Handle when your app starts
         }
 
