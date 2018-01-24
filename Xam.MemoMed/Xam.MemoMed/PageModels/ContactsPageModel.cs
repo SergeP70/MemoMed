@@ -1,7 +1,12 @@
 ﻿using FluentValidation;
 using FreshMvvm;
+using PCLStorage;
 using Plugin.Messaging;
 using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 using Xam.MemoMed.Domain.Models;
 using Xam.MemoMed.Domain.Services.Abstract;
 using Xam.MemoMed.Domain.Validators;
@@ -20,21 +25,79 @@ namespace Xam.MemoMed.PageModels
             this.usersService = usersService;
             userValidator = new UserValidator();
             // for now: just get user 1
-            contactPerson = usersService.GetUserById(1).Result;
+            if (contactPerson == null)
+                contactPerson = usersService.GetUserById(1).Result;
+            //LoadContactXML();
         }
 
 
         /// <summary>
         /// This methods is called when the View is appearing
         /// </summary>
-        protected override void ViewIsAppearing(object sender, System.EventArgs e)
+        protected async override void ViewIsAppearing(object sender, System.EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
             // (enkel) bij opstart wordt deze methode 2x uitgevoerd
-            //CoreMethods.DisplayAlert("Page is appearing", "", "Ok");
+            await CoreMethods.DisplayAlert("Page is appearing", "", "Ok");
+
             //bind contact to the Page's ItemSource
             LoadContactsState();
         }
+
+        private async void LoadContactXML()
+        {
+            // load contact from XML
+            string fileName = "contactPerson.xml";
+            IFolder folder = FileSystem.Current.LocalStorage;
+            ExistenceCheckResult result = await folder.CheckExistsAsync(fileName);
+            if (result == ExistenceCheckResult.FileExists)
+            {
+                try
+                {
+                    IFile file = await folder.GetFileAsync(fileName);
+                    string text = await file.ReadAllTextAsync();
+                    using (var reader = new StringReader(text))
+                    {
+                        var serializer = new XmlSerializer(typeof(User));
+                        contactPerson = (User)serializer.Deserialize(reader);
+                        await Task.Delay(0);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.WriteLine($"Error reading settings: {ex.Message}");
+                }
+            }
+        }
+
+        public async override void Init(object initData)
+        {
+            base.Init(initData);
+            // load contact from XML
+            string fileName = "contactPerson.xml";
+            IFolder folder = FileSystem.Current.LocalStorage;
+            ExistenceCheckResult result = await folder.CheckExistsAsync(fileName);
+            if (result == ExistenceCheckResult.FileExists)
+            {
+                try
+                {
+                    IFile file = await folder.GetFileAsync(fileName);
+                    string text = await file.ReadAllTextAsync();
+                    using (var reader = new StringReader(text))
+                    {
+                        var serializer = new XmlSerializer(typeof(User));
+                        contactPerson = (User)serializer.Deserialize(reader);
+                        await Task.Delay(0);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.WriteLine($"Error reading settings: {ex.Message}");
+                }
+            }
+
+        }
+
 
         /// <summary>
         /// Executed when returning to this Model from a previous model
@@ -94,7 +157,7 @@ namespace Xam.MemoMed.PageModels
                         var emailMessenger = CrossMessaging.Current.EmailMessenger;
                         if (smsMessenger.CanSendSmsInBackground)
                         {
-                            smsMessenger.SendSmsInBackground("0471501136", 
+                            smsMessenger.SendSmsInBackground("0471501136",
                                 "Bericht van MemoMed: U krijgt deze automatische SMS omdat u aangeduid bent als contactpersoon van Serge Pille");
                         }
                         await CoreMethods.DisplayAlert("Contactpersoon is opgeslagen ontvangt een SMS ter bevestiging", "", "Ok");
@@ -102,7 +165,21 @@ namespace Xam.MemoMed.PageModels
                         {
                             emailMessenger.SendEmail("serge.pille@telenet.be", "Nieuwe contactpersoon van MemoMed", "Beste contact, u bent gekozen als contactpersoon van MemoMed.");
                         }
+                        // saving settings tot XML file
+                        var serializer = new XmlSerializer(typeof(User));
+                        string userAsXml = "";
+                        using (var stringWriter = new StringWriter())
+                        using (var writer = XmlWriter.Create(stringWriter))
+                        {
+                            serializer.Serialize(writer, contactPerson);
+                            userAsXml = stringWriter.ToString();
+                        }
+                        IFolder folder = FileSystem.Current.LocalStorage;
+                        IFile file = await folder.CreateFileAsync("contactPerson.xml",
+                            CreationCollisionOption.ReplaceExisting);
+                        await file.WriteAllTextAsync(userAsXml);
                     }
+
                 });
             }
         }
